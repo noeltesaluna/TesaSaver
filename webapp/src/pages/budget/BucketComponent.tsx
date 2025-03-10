@@ -1,10 +1,16 @@
-const Bucket = ({amount, bucketname}: {amount: number, bucketname:string}) => {
+import { Bucket } from "../../types/types"
+import { Reserve } from "../../types/types"
+
+const BucketComponent = (Bucket: Bucket) => {
+    const {bucket_id, created_at, bucket_name, Reserves} = Bucket
+    const bucket_amount = Reserves?.reduce((accumulator, currentValue) => accumulator + currentValue.reserve_amount, 0)
+    console.log(bucket_amount)
     return (
         <div className="bg-white px-8 py-4 rounded-xl flex flex-col shadow">
             <div className="flex justify-between flex-row">
-                <h1 className="font-bold text-3xl">{bucketname}</h1>
-                <div className="flex flex-row items-end gap-1">
-                    <p className="text-2xl font-bold">${amount} </p>
+                <h1 className="font-bold text-3xl">{bucket_name}</h1>
+                <div className="flex flex-row items-end gap-1.5">
+                    <p className="text-2xl font-bold">${bucket_amount} </p>
                     <p className="text-lg font-bold">total budget</p>
                 </div>
             </div>     
@@ -25,4 +31,4 @@ const Bucket = ({amount, bucketname}: {amount: number, bucketname:string}) => {
     )
 }
 
-export default Bucket
+export default BucketComponent
