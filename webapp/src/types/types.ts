@@ -1,10 +1,11 @@
 export interface Budget {
     budget_id: number;
+    budget_name: string;
     created_at: string;
     budget_amount: number;
     start_date: string;
     end_date: string;
-    buckets?: Bucket[];
+    Buckets?: Bucket[];
 }
   
 export interface Bucket {
@@ -12,7 +13,7 @@ export interface Bucket {
     budget_id: number;
     created_at: string;
     bucket_name: string;
-    reserves?: Reserve[];
+    Reserves?: Reserve[];
 }
   
 export interface Reserve {
@@ -21,7 +22,7 @@ export interface Reserve {
     created_at: string;
     reserve_name: string;
     reserve_amount: number;
-    transactions?: Transaction[];
+    Transactions?: Transaction[];
 }
   
 export interface Transaction {
