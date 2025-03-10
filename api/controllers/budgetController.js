@@ -1,13 +1,18 @@
-const {Budget, Bucket} = require('../models/index')
+const {Budget, Bucket, Reserve} = require('../models/index')
 
 exports.getAllBudgets = async (req, res) => {
     try {
         const budgets = await Budget.findAll({
-            include: Bucket
+            include: {
+                model: Bucket,
+                    include: {
+                    model: Reserve
+                }
+            }
         });
         res.json(budgets);
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error });
     }
 };
 
