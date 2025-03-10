@@ -17,8 +17,12 @@ const Budget = db.define(
             default: "Budget"
         },
         budget_amount: {
-            type: DataTypes.NUMBER,
-            default: 0.00
+            type: DataTypes.DOUBLE,
+            default: 0.00,
+            get() { // Node-pg converts numeric to string, so we use a custom getter
+                const value = this.getDataValue('budget_amount');
+                return value === null ? null : parseFloat(value);
+            }
         },
         start_date: {
             type: DataTypes.DATE,

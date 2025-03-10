@@ -16,7 +16,11 @@ const Reserve = db.define(
             type: DataTypes.STRING   
         },
         reserve_amount: {
-            type: DataTypes.NUMBER
+            type: DataTypes.DOUBLE,
+            get() {
+                const value = this.getDataValue('reserve_amount');
+                return value === null ? null : parseFloat(value);
+            }
         },
     },
     {
