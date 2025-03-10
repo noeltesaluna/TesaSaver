@@ -22,7 +22,7 @@ exports.updateBudget = async (req, res) => {
     try {
         const budget = await Budget.findByPk(id)
         if (!budget) {
-            res.status(404).json({ error: 'Todo not found' });
+            res.status(404).json({ error: 'Budget not found' });
         } else {
             budget.budget_name = budget_name
             budget.budget_amount = budget_amount
