@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const db = require('./config/database')
 const budgetRoutes = require('./routes/budgetRoutes')
+const reserveRoutes = require('./routes/reserveRoutes')
 
 // Connect to the database
 db.authenticate()
@@ -13,6 +14,7 @@ app.use(express.json())
 
 // Routes
 app.use('/budgets', budgetRoutes);
+app.use('/reserves', reserveRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
