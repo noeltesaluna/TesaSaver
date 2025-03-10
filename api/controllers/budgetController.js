@@ -65,3 +65,26 @@ exports.getAllBudgets = async (req, res) => {
         res.status(500).json({ error: error });
     }
 };
+
+exports.getBudget = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const budgets = await Budget.findAll({
+            where: {'budget_id': id},
+            include: {
+                model: Bucket,
+                    include: {
+                    model: Reserve
+                }
+            }
+        });
+        const budget = budgets[0]
+        if (budget == null) {
+            res.status(404).json({ error: 'Budget not found' });
+        } else {
+            res.json(budget);
+        }
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
