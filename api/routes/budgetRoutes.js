@@ -3,6 +3,5 @@ const router = express.Router();
 const budgetContoller = require('../controllers/budgetController')
 
 router.get('/', budgetContoller.getAllBudgets)
-router.post('/test', budgetContoller.createTestBudget)
 
 module.exports = router
