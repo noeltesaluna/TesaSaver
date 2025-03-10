@@ -13,16 +13,20 @@ const Budget = db.define(
             unique: true
         },
         budget_name: {
-            type: DataTypes.STRING   
+            type: DataTypes.STRING,
+            default: "Budget"
         },
         budget_amount: {
-            type: DataTypes.NUMBER
+            type: DataTypes.NUMBER,
+            default: 0.00
         },
         start_date: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
         },
         end_date: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
         }
     },
     {
