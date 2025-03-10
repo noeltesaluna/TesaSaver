@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/database')
-const Budget = require('./budget')
 
 const Bucket = db.define(
   'Bucket',
